@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 280vh;
+  overflow-x: hidden;
+  background-image: url(./images/FUNDO_3.jpg);
+}
+
+header {
+  background-color: black;
+  width: 100%;
+  height: 30vh;
+  display: flex;
+}
+
+.icon,
+a {
+  margin: 0.5vw;
+  width: 2.5vw;
+  height: 5vh;
+}
+
+.container-header {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header-primary-color {
+  color: rgb(85, 203, 66);
+  font-size: 4rem;
+}
+
+.search-input {
+  background-color: transparent;
+  border: 1px solid white;
+  width: 30vw;
+  height: 4vh;
+  border-radius: 0.4rem;
+  padding-left: 1rem;
+  color: rgb(85, 203, 66);
+}
+
+.search-input::-webkit-input-placeholder {
+  color: rgb(85, 203, 66);
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  top: 45%;
+  right: 3%;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: rgb(85, 203, 66);
+}
+
+main {
+  width: 100%;
+  height: 225vh;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 30vh;
+  background-color: rgb(17, 87, 24);
+}
+
+#info-footer{
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
+}
+
+footer small, #info-footer  {
+  color: rgb(49, 140, 46);
+}
+
+footer span {
+  color: white;
+}
