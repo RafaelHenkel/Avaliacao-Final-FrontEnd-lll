@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-weight: 600;
 }
 
 body {
@@ -11,9 +12,9 @@ body {
 }
 
 header {
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   width: 100%;
-  height: 30vh;
+  height: 80vh;
   display: flex;
 }
 
@@ -65,10 +66,62 @@ a {
   color: rgb(85, 203, 66);
 }
 
+.btn-outline-primary{
+  color: rgb(85, 203, 66) !important;
+  border-color: rgb(85, 203, 66) !important;
+}
+
+.btn-outline-primary:hover{
+  color: white !important;
+  background-color: rgb(85, 203, 66) !important;
+}
+
 main {
   width: 100%;
-  height: 225vh;
+  height: 170vh;
 }
+
+.card {
+  --bs-card-bg: rgb(53,67,56) !important;
+}
+
+.card-body{
+max-height: 1rem;
+}
+
+.my-text-body{
+  color: rgb(126,128,127);
+}
+
+.status-text{
+  display: flex;
+  align-items: center;
+}
+
+.alive{
+  height: 0.5rem;
+  width: 0.5rem;
+  margin-right: 0.375rem;
+  background: rgb(85, 204, 68);
+  border-radius: 50%;
+}
+
+.dead{
+  height: 0.5rem;
+  width: 0.5rem;
+  margin-right: 0.375rem;
+  background: rgb(214, 61, 46);
+  border-radius: 50%;
+}
+
+.unknown{
+  height: 0.5rem;
+  width: 0.5rem;
+  margin-right: 0.375rem;
+  background: rgb(158, 158, 158);
+  border-radius: 50%;
+}
+/* ////////////////////////////////////////////////////////// */
 
 footer {
   display: flex;

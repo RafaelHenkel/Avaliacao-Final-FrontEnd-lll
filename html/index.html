@@ -47,10 +47,25 @@
             </svg>
           </span>
         </div>
+        <div class="row">
+          <div class="col mt-3">
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+              <button type="button" class="btn btn-outline-primary" onclick="prevPage()">Voltar</button>
+              <button type="button" class="btn btn-outline-primary" onclick="nextPage()">Proxima</button>
+            </div>
+          </div>
+        </div>
       </div>
+      
     </header>
 
-    <main></main>
+    <main>
+      <div class="container mt-5">
+        <div class="row" id="row-cards">
+
+        </div>
+      </div>
+    </main>
 
     <footer>
       <div id="info-footer"></div>
@@ -69,6 +84,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../js/api.js"></script>
     <script src="../js/scripts.js"></script>
   </body>
 </html>
