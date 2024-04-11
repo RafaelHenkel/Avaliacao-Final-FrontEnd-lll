@@ -93,7 +93,7 @@ max-height: 1rem;
   align-items: center;
 }
 
-.alive{
+.Alive{
   height: 0.5rem;
   width: 0.5rem;
   margin-right: 0.375rem;
@@ -101,7 +101,7 @@ max-height: 1rem;
   border-radius: 50%;
 }
 
-.dead{
+.Dead{
   height: 0.5rem;
   width: 0.5rem;
   margin-right: 0.375rem;
