@@ -34,11 +34,20 @@ header h1{
   }
 }
 
-.icon,
-a {
+.icon{
   margin: 0.5vw;
   width: 2.5vw;
   height: 5vh;
+  animation: iconAnimation 3.5s  cubic-bezier(0.77, 0, 0.175, 1) 0.5s;
+}
+
+@keyframes iconAnimation {
+  0% {
+    transform: translate(4200%,0);
+  }
+  100% {
+    transform: translate(0,0);
+  }
 }
 
 .header-primary-color {
