@@ -68,7 +68,7 @@ const getCharacters = async () => {
               <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">${character.name}</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body d-flex flex-column align-items-center">
+            <div class="modal-body d-flex flex-column">
               <img src="${character.image}" alt="" />
               <div class="mt-3">
               <p class="card-text text-white status-text">
