@@ -39,7 +39,9 @@ const getCharacters = async () => {
             </div>
             <div class="col-md-7">
               <div class="card-body">
-              <a href='' data-bs-toggle="modal" data-bs-target="#exampleModal${character.id}"class="card-title text-white">
+              <a href='' data-bs-toggle="modal" data-bs-target="#exampleModal${
+                character.id
+              }"class="card-title text-white">
                 ${character.name}
               </a>
                 <p class="card-text text-white status-text">
@@ -54,14 +56,16 @@ const getCharacters = async () => {
                 </p>
                 <p class="card-text my-text-body">
                   Último episódio visto: </br>
-                  <span class="text-white">////////////////////</span>
+                  <span class="text-white">/////////////////////</span>
                 </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="modal fade" id="exampleModal${character.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="exampleModal${
+        character.id
+      }" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -95,7 +99,7 @@ const getCharacters = async () => {
       rowCards.innerHTML += htmlCard;
 
     });
-  } catch (error) {
+  } catch (error) { 
     console.log(error);
   }
 };
