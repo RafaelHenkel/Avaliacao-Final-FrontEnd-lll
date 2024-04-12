@@ -38,8 +38,8 @@ const getCharacters = async () => {
             </div>
             <div class="col-md-7">
               <div class="card-body">
-              <a href='' data-bs-toggle="modal" data-bs-target="#exampleModal${character.id}">
-                <h2 class="card-title text-white fw-bold">${character.name}</h2>
+              <a href='' data-bs-toggle="modal" data-bs-target="#exampleModal${character.id}"class="card-title text-white">
+                ${character.name}
               </a>
                 <p class="card-text text-white status-text">
                 <span class="${character.status}"></span>
@@ -70,7 +70,11 @@ const getCharacters = async () => {
             <div class="modal-body d-flex flex-column align-items-center">
               <img src="${character.image}" alt="" />
               <div class="mt-3">
-                <p>Status: ${character.status}</p>
+              <p class="card-text text-white status-text">
+              Status:   
+              ${character.status}
+              <span class="${character.status} mx-2"></span>
+              </p>
                 <p>Especie: ${character.species}</p>
                 <p>Gênero: ${character.gender}</p>
                 <p>Origem: ${character.origin.name}</p>
@@ -88,7 +92,7 @@ const getCharacters = async () => {
       }
 
       rowCards.innerHTML += htmlCard;
-      6;
+
     });
   } catch (error) {
     console.log(error);
