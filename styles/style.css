@@ -76,6 +76,10 @@ main {
   height: 170vh;
 }
 
+main a{
+  text-decoration: none;
+}
+
 .card {
   --bs-card-bg: rgb(53,67,56) !important;
 }
@@ -91,6 +95,15 @@ max-height: 1rem;
 .status-text{
   display: flex;
   align-items: center;
+}
+
+.modal-content {
+  background-color: black !important;
+  color: white !important;
+}
+
+.modal-header h1{
+  font-size: 2rem !important;
 }
 
 .Alive{

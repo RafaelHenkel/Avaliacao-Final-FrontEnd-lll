@@ -24,10 +24,11 @@ getInfos();
 
 const getCharacters = async () => {
   try {
-    const response = await api.get(`character/[${acc++},${acc++},${acc++},${acc++},${acc++},${acc++}]`);
+    const response = await api.get(`/character/[${acc++},${acc++},${acc++},${acc++},${acc++},${acc++}]`);
     const characters = response.data;
 
     characters.map(function (character, index) {
+      console.log(character.id);
       let htmlCard = `
       <div class="col-6">
         <div class="card mb-3">
@@ -37,7 +38,9 @@ const getCharacters = async () => {
             </div>
             <div class="col-md-7">
               <div class="card-body">
+              <a href='' data-bs-toggle="modal" data-bs-target="#exampleModal${character.id}">
                 <h2 class="card-title text-white fw-bold">${character.name}</h2>
+              </a>
                 <p class="card-text text-white status-text">
                 <span class="${character.status}"></span>
                 ${character.status} - ${character.species}
@@ -57,13 +60,36 @@ const getCharacters = async () => {
           </div>
         </div>
       </div>
+      <div class="modal fade" id="exampleModal${character.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">${character.name}</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex flex-column align-items-center">
+              <img src="${character.image}" alt="" />
+              <div class="mt-3">
+                <p>Status: ${character.status}</p>
+                <p>Especie: ${character.species}</p>
+                <p>Gênero: ${character.gender}</p>
+                <p>Origem: ${character.origin.name}</p>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
   `;
       if (index > 4) {
         htmlCard = '<div class="col-6"></div>' + htmlCard;
       }
 
       rowCards.innerHTML += htmlCard;
-    6});
+      6;
+    });
   } catch (error) {
     console.log(error);
   }
@@ -83,4 +109,3 @@ const nextPage = () => {
   rowCards.innerHTML = ``;
   getCharacters();
 };
-
