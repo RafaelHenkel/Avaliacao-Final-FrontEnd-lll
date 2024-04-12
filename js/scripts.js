@@ -22,13 +22,14 @@ const getInfos = async () => {
 
 getInfos();
 
+
 const getCharacters = async () => {
   try {
     const response = await api.get(`/character/[${acc++},${acc++},${acc++},${acc++},${acc++},${acc++}]`);
     const characters = response.data;
 
     characters.map(function (character, index) {
-      console.log(character.id);
+
       let htmlCard = `
       <div class="col-6">
         <div class="card mb-3">
