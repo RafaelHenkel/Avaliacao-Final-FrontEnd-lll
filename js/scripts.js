@@ -27,8 +27,7 @@ const getCharacters = async () => {
     const response = await api.get(`character/[${acc++},${acc++},${acc++},${acc++},${acc++},${acc++}]`);
     const characters = response.data;
 
-    characters.forEach((character, index) => {
-
+    characters.map(function (character, index) {
       let htmlCard = `
       <div class="col-6">
         <div class="card mb-3">
@@ -51,7 +50,7 @@ const getCharacters = async () => {
                 </p>
                 <p class="card-text my-text-body">
                   Último episódio visto: </br>
-                  <span class="text-white">//</span>
+                  <span class="text-white">////////////////////</span>
                 </p>
               </div>
             </div>
@@ -64,9 +63,7 @@ const getCharacters = async () => {
       }
 
       rowCards.innerHTML += htmlCard;
-
-    });
-    
+    6});
   } catch (error) {
     console.log(error);
   }
@@ -87,4 +84,3 @@ const nextPage = () => {
   getCharacters();
 };
 
-const searshCharacter = async () => {};
