@@ -22,13 +22,15 @@ const getInfos = async () => {
 
 getInfos();
 
-const getCharacters = async () => {
-  try {
-    const response = await api.get(`/character/[${acc++},${acc++},${acc++},${acc++},${acc++},${acc++}]`);
+const getCharacters = () => {
+  api.get(`/character/[${acc++},${acc++},${acc++},${acc++},${acc++},${acc++}]`).then(function (response) {
     const characters = response.data;
 
     characters.map(async function (character, index) {
-      let htmlCard = `
+      const episodeUrl = character.episode.at(-1);
+      
+      api.get(episodeUrl).then(function (episode) {
+        let htmlCard = `
       <div class="col-6">
         <div class="card mb-3">
           <div class="row g-0" id="row-cards">
@@ -52,7 +54,7 @@ const getCharacters = async () => {
                 </p>
                 <p class="card-text my-text-body">
                   Último episódio visto: </br>
-                  <span class="text-white">Somente ao pesquisar personagem</span>
+                  <span class="text-white">${episode.data.name}</span>
                 </p>
               </div>
             </div>
@@ -86,15 +88,14 @@ const getCharacters = async () => {
         </div>
       </div>
   `;
-      if (index > 4) {
-        htmlCard = '<div class="col-6"></div>' + htmlCard;
-      }
+        if (index> 4) {
+          htmlCard = '<div class="col-6"></div>' + htmlCard;
+        }
 
-      rowCards.innerHTML += htmlCard;
+        rowCards.innerHTML += htmlCard;
+      });
     });
-  } catch (error) {
-    console.log(error);
-  }
+  });
 };
 
 getCharacters();
