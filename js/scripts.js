@@ -23,14 +23,13 @@ const getInfos = async () => {
 getInfos();
 
 const getCharacters = () => {
-  api.get(`/character/[${acc++},${acc++},${acc++},${acc++},${acc++},${acc++}]`).then(function (response) {
+  api.get(`/character/[${acc++},${acc++},${acc++},${acc++},${acc++},${acc++}]`).then(async function (response) {
     const characters = response.data;
 
-    characters.map(async function (character, index) {
+    await characters.map(function (character, index) {
       const episodeUrl = character.episode.at(-1);
       
       api.get(episodeUrl).then(function (episode) {
-        console.log(character);
         let htmlCard = `
       <div class="col-6">
         <div class="card mb-3">
@@ -89,16 +88,17 @@ const getCharacters = () => {
         </div>
       </div>
   `;
-  console.log(index>4);
+
         if (index>4) {
           htmlCard = '<div class="col-6"></div>' + htmlCard;
         }
 
         rowCards.innerHTML += htmlCard;
-      });
-    }).catch(function (error) {
+        
+      }).catch(function (error) {
       console.log(error);
     });
+    })
   }).catch(function (error) {
     console.log(error);
   });
