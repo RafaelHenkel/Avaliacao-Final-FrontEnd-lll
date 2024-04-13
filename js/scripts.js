@@ -30,6 +30,7 @@ const getCharacters = () => {
       const episodeUrl = character.episode.at(-1);
       
       api.get(episodeUrl).then(function (episode) {
+        console.log(character);
         let htmlCard = `
       <div class="col-6">
         <div class="card mb-3">
@@ -88,13 +89,18 @@ const getCharacters = () => {
         </div>
       </div>
   `;
-        if (index> 4) {
+  console.log(index>4);
+        if (index>4) {
           htmlCard = '<div class="col-6"></div>' + htmlCard;
         }
 
         rowCards.innerHTML += htmlCard;
       });
+    }).catch(function (error) {
+      console.log(error);
     });
+  }).catch(function (error) {
+    console.log(error);
   });
 };
 

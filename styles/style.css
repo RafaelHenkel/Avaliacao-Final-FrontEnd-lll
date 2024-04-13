@@ -71,6 +71,12 @@ header h1{
 
 .input-wrapper {
   position: relative;
+  animation: reveal 1.5s  cubic-bezier(0.77, 0, 0.175, 1) 0.5s;  
+}
+
+.btn-group{
+  animation-delay: 2s;
+  animation: reveal 1.5s  cubic-bezier(0.77, 0, 0.175, 1) 0.5s;   
 }
 
 .input-icon {
