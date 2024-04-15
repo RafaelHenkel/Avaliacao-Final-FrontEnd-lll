@@ -23,14 +23,18 @@ const getInfos = async () => {
 getInfos();
 
 const getCharacters = () => {
-  api.get(`/character/[${acc++},${acc++},${acc++},${acc++},${acc++},${acc++}]`).then(async function (response) {
-    const characters = response.data;
+  api
+    .get(`/character/[${acc++},${acc++},${acc++},${acc++},${acc++},${acc++}]`)
+    .then(function (response) {
+      const characters = response.data;
 
-    await characters.map(function (character, index) {
-      const episodeUrl = character.episode.at(-1);
-      
-      api.get(episodeUrl).then(function (episode) {
-        let htmlCard = `
+      characters.map(function (character, index) {
+        const episodeUrl = character.episode.at(-1);
+
+        api
+          .get(episodeUrl)
+          .then(function (episode) {
+            let htmlCard = `
       <div class="col-6">
         <div class="card mb-3">
           <div class="row g-0" id="row-cards">
@@ -89,19 +93,20 @@ const getCharacters = () => {
       </div>
   `;
 
-        if (index>4) {
-          htmlCard = '<div class="col-6"></div>' + htmlCard;
-        }
+            if (index > 4) {
+              htmlCard = '<div class="col-6"></div>' + htmlCard;
+            }
 
-        rowCards.innerHTML += htmlCard;
-        
-      }).catch(function (error) {
+            rowCards.innerHTML += htmlCard;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      });
+    })
+    .catch(function (error) {
       console.log(error);
     });
-    })
-  }).catch(function (error) {
-    console.log(error);
-  });
 };
 
 getCharacters();
