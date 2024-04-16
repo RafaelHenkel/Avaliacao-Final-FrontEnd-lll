@@ -3,18 +3,16 @@ const rowCards = document.getElementById("row-cards");
 
 let acc = 1;
 
-api
-  .get(`/character/[${acc++},${acc++},${acc++},${acc++},${acc++},${acc++}]`)
-  .then(function (response) {
-    const characters = response.data;
+const getCharacters = () => {
+  api
+    .get(`/character/[${acc++},${acc++},${acc++},${acc++},${acc++},${acc++}]`)
+    .then(function (response) {
+      const characters = response.data;
 
-    characters.map(function (character, index) {
-      const episodeUrl = character.episode.at(-1);
+      characters.map(function (character, index) {
+        const episodeUrl = character.episode.at(-1);
 
-      api
-        .get(episodeUrl)
-        .then(function (episode) {
-          let htmlCard = `
+        let htmlCard = `
       <div class="col-6">
         <div class="card mb-3">
           <div class="row g-0" id="row-cards">
@@ -27,7 +25,7 @@ api
                 ${character.name}
               </a>
                 <p class="card-text text-white status-text">
-                  span class="${character.status}"></span>
+                  <span class="${character.status}"></span>
                 ${character.status} - ${character.species}
                 </p>
                 <p class="card-text my-text-body">
@@ -38,7 +36,7 @@ api
                 </p>
                 <p class="card-text my-text-body">
                   Último episódio visto: </br>
-                  <span class="text-white">${episode.data.name}</span>
+                  <span class="text-white" id="last-episode-${character.id}"></span>
                 </p>
               </div>
             </div>
@@ -73,20 +71,29 @@ api
       </div>
       `;
 
-          if (index > 4) {
-            htmlCard = '<div class="col-6"></div>' + htmlCard;
-          }
+        if (index > 4) {
+          htmlCard = '<div class="col-6"></div>' + htmlCard;
+        }
 
-          rowCards.innerHTML += htmlCard;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        rowCards.innerHTML += htmlCard;
+        api
+          .get(episodeUrl)
+          .then(function (episode) {
+            const labelEpisode = document.getElementById(`last-episode-${character.id}`);
+            const episodeName = episode.data.name;
+            labelEpisode.innerHTML = episodeName;
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
     });
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
+};
+
+getCharacters()
 
 const getInfos = async () => {
   try {
